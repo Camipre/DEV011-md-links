@@ -71,3 +71,4 @@ mdLinks("./some/dir", false)
 los tests del hito actual
 
 [👈Todos los hitos](../README.md#6-hitos)
+[google](https://www.google.com/)
