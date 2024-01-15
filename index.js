@@ -1,11 +1,11 @@
-const { ConverAbsolute, isValidMarkdownFile, extractLinks } = require('./src/funtion.js');
+const { ConverAbsolute, isValidMarkdownFile, extractLinks, validateLinks } = require('./src/funtion.js');
 const fs = require('fs');
 
 module.exports = {
   mdLinks,
 };
 
-function mdLinks(path, validate = {}) {
+function mdLinks(path, validate = false) {
   return new Promise((resolve, reject) => {
     const absolutePath = ConverAbsolute(path);
 
@@ -21,7 +21,14 @@ function mdLinks(path, validate = {}) {
               reject(`Error al leer el archivo: ${err.message}`);
             } else {
               const links = extractLinks(data, absolutePath);
-              resolve(links);
+
+              if (validate) {
+                validateLinks(links)
+                  .then((validatedLinks) => resolve(validatedLinks))
+                  .catch(reject);
+              } else {
+                resolve(links);
+              }
             }
           });
         }
@@ -29,21 +36,3 @@ function mdLinks(path, validate = {}) {
     });
   });
 }
-
-
-
-//const fs = require("fs");
-
-// const MdLinks = (path, options) => {
-//   return new Promise((resolve, reject) => {
-//     // Identificar si la ruta existe
-//     if (fs.existsSync(path)) {
-//       //chequear o convertir a una ruta absoluta
-//       //Probar si esta ruta absoluta es una archivo o un directorio
-//       // Si es u7n directorio filtar los archivos md.
-//     } else {
-//       // si no existe la ruta se rechaza la promesa
-//       reject('La ruta no existe')
-//     }
-//   });
-// };

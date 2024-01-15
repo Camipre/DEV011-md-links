@@ -71,3 +71,6 @@ npm install `<github-user>/md-links`.
 ```
 
 [👈Todos los hitos](../README.md#6-hitos)
+[NPM](https://www.npmjs.com/).
+
+[enlace roto](https://www.ns.c/).

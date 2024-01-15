@@ -13,9 +13,9 @@
     "commit": "d257c41694344460623eb1f1bb2a690bdfe33f83"
   },
   "dependencies": {
+    "axios": "^1.6.3",
     "jest": "^29.7.0",
     "markdown-it": "^14.0.0",
     "marked": "^11.1.0"
   }
- 
 }
